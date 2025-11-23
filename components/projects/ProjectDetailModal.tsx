@@ -22,7 +22,9 @@ export default function ProjectDetailModal({
 
   const IconComponent = project.icon || (isTeam ? Users : User);
   const hasMedia =
-    project.images?.length > 0 || project.video || project.videoEmbed;
+    (project.images && project.images.length > 0) ||
+    project.video ||
+    project.videoEmbed;
 
   return (
     <motion.div
@@ -52,10 +54,10 @@ export default function ProjectDetailModal({
               <IconComponent className="w-12 h-12 text-purple-400" />
             )}
             <div>
-              <h2 className="text-3xl font-bold text-white mb-1">
+              <h2 className="text-3xl font-main text-white mb-1">
                 {project.title}
               </h2>
-              <p className="text-sm text-gray-400">{project.period}</p>
+              <p className="text-sm font-sub text-gray-400">{project.period}</p>
             </div>
           </div>
           <button
@@ -165,12 +167,12 @@ export default function ProjectDetailModal({
         {isTeam && project.team && project.role && (
           <div className="flex gap-6 mb-6 text-sm">
             <div>
-              <span className="text-gray-400">팀원: </span>
-              <span className="text-purple-300">{project.team}</span>
+              <span className="text-gray-400 font-main">팀원: </span>
+              <span className="text-purple-300 font-main">{project.team}</span>
             </div>
             <div>
-              <span className="text-gray-400">역할: </span>
-              <span className="text-purple-300">{project.role}</span>
+              <span className="text-gray-400 font-main">역할: </span>
+              <span className="text-purple-300 font-main">{project.role}</span>
             </div>
           </div>
         )}
@@ -181,7 +183,7 @@ export default function ProjectDetailModal({
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 rounded-lg text-gray-200 hover:text-white hover:bg-slate-600/50 transition-all border border-slate-600/50"
+            className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 rounded-lg text-gray-200 font-main hover:text-white hover:bg-slate-600/50 transition-all border border-slate-600/50"
           >
             <Github className="w-4 h-4" />
             GitHub
@@ -190,7 +192,7 @@ export default function ProjectDetailModal({
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-purple-500/30 rounded-lg text-purple-200 hover:bg-purple-500/40 transition-all border border-purple-400/50"
+            className="flex items-center gap-2 px-4 py-2 bg-purple-500/30 rounded-lg text-purple-200 font-main hover:bg-purple-500/40 transition-all border border-purple-400/50"
           >
             <ExternalLink className="w-4 h-4" />
             Live Demo
@@ -199,12 +201,12 @@ export default function ProjectDetailModal({
 
         {/* Tech Stack */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-white mb-3">Tech Stack</h3>
+          <h3 className="text-lg font-main text-white mb-3">Tech Stack</h3>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 bg-purple-500/30 rounded-full text-sm text-purple-200 border border-purple-400/30"
+                className="px-4 py-2 bg-purple-500/30 rounded-full text-sm font-sub text-purple-200 border border-purple-400/30"
               >
                 {tech}
               </span>
@@ -216,25 +218,23 @@ export default function ProjectDetailModal({
         {project.details && (
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">
+              <h3 className="text-lg font-main text-white mb-2">
                 프로젝트 개요
               </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 font-sub leading-relaxed">
                 {project.details.overview}
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">
-                주요 기능
-              </h3>
+              <h3 className="text-lg font-main text-white mb-2">주요 기능</h3>
               <ul className="space-y-2">
                 {project.details.features.map((feature, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-2 text-gray-300"
+                    className="flex items-start gap-2 font-sub text-gray-300"
                   >
-                    <span className="text-purple-400 mt-1">•</span>
+                    <span className="text-purple-400 font-sub mt-1">•</span>
                     {feature}
                   </li>
                 ))}
@@ -243,27 +243,23 @@ export default function ProjectDetailModal({
 
             {project.details.myRole && (
               <div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  나의 역할
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <h3 className="text-lg font-main text-white mb-2">나의 역할</h3>
+                <p className="text-gray-300 font-sub leading-relaxed">
                   {project.details.myRole}
                 </p>
               </div>
             )}
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">
-                기술적 도전
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-lg font-main text-white mb-2">기술적 도전</h3>
+              <p className="text-gray-300 font-sub leading-relaxed">
                 {project.details.challenges}
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-white mb-2">성과</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <h3 className="text-lg font-main text-white mb-2">성과</h3>
+              <p className="text-gray-300 font-sub leading-relaxed">
                 {project.details.results}
               </p>
             </div>

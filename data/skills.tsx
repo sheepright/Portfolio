@@ -15,9 +15,11 @@ import {
   SiGooglecloud,
   SiUnity,
   SiExpo,
+  SiVercel,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbBrandCSharp, TbBrandAzure } from "react-icons/tb";
+import { SiFramer } from "react-icons/si";
 import type { Skill } from "@/types";
 
 export const mainSkills: Skill[] = [
@@ -163,5 +165,19 @@ export const experiencedSkills: Skill[] = [
     color: "from-gray-600/20 to-slate-600/20",
     iconColor: "text-gray-300",
     category: "DevTool",
+  },
+  {
+    name: "Vercel",
+    icon: SiVercel,
+    color: "from-black/20 to-gray-800/20",
+    iconColor: "text-white",
+    category: "DevTool",
+  },
+  {
+    name: "Framer Motion",
+    icon: SiFramer,
+    color: "from-pink-500/20 to-purple-500/20",
+    iconColor: "text-pink-400",
+    category: "Frontend",
   },
 ];

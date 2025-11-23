@@ -39,10 +39,8 @@ export default function ProjectCard({
             <IconComponent className="w-10 h-10 text-purple-400 group-hover:scale-110 transition-transform" />
           )}
           <div>
-            <h3 className="text-xl font-semibold text-white">
-              {project.title}
-            </h3>
-            <p className="text-xs text-gray-400">{project.period}</p>
+            <h3 className="text-xl font-main text-white">{project.title}</h3>
+            <p className="text-xs font-sub text-gray-400">{project.period}</p>
           </div>
         </div>
         <div className="flex gap-2">
@@ -69,13 +67,17 @@ export default function ProjectCard({
 
       {isTeam && project.team && project.role && (
         <div className="flex gap-4 mb-3 text-sm">
-          <span className="text-purple-300">팀원: {project.team}</span>
+          <span className="text-purple-300 font-main">
+            팀원: {project.team}
+          </span>
           <span className="text-gray-400">|</span>
-          <span className="text-purple-300">역할: {project.role}</span>
+          <span className="text-purple-300 font-main">
+            역할: {project.role}
+          </span>
         </div>
       )}
 
-      <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+      <p className="text-gray-300 font-main mb-4 text-sm leading-relaxed">
         {project.description}
       </p>
 
@@ -83,14 +85,14 @@ export default function ProjectCard({
         {project.tech.map((tech) => (
           <span
             key={tech}
-            className="px-3 py-1 bg-purple-500/20 rounded-full text-xs text-purple-300"
+            className="px-3 py-1 bg-purple-500/20 rounded-full text-sm font-sub text-purple-300"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      <div className="mt-4 text-sm text-purple-400 group-hover:text-purple-300 transition-colors">
+      <div className="mt-4 text-sm font-main text-purple-400 group-hover:text-purple-300 transition-colors">
         자세히 보기 →
       </div>
     </motion.div>

@@ -14,13 +14,13 @@ const stats = [
   },
   {
     icon: Award,
-    number: "8",
+    number: "5",
     label: "GROUP PROJECTS",
     description: "팀으로 진행한 프로젝트",
   },
   {
     icon: Briefcase,
-    number: "5",
+    number: "9",
     label: "SKILLS",
     description: "사용해본 기술스택",
   },

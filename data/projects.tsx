@@ -4,57 +4,53 @@ import type { Project } from "@/types";
 export const personalProjects: Project[] = [
   {
     title: "포트폴리오 웹사이트",
-    description:
-      "Next.js와 Framer Motion을 활용한 인터랙티브 포트폴리오. 반응형 디자인과 부드러운 애니메이션을 구현했습니다.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    description: "코딩 공부를 하면 진행한 프로젝트 등을 기록한 웹사이트",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Versel"],
     link: "https://portfolio.com",
-    github: "https://github.com/yourusername/portfolio",
-    period: "2024.01 - 2024.02",
-    icon: Palette,
+    github: "https://github.com/sheepright/Portfolio",
+    period: "2025.10 - 2025.10",
+    iconImage: "/projects/portfolio/portfolio.png",
     // 이미지 추가 (선택사항) - public 폴더에 이미지를 넣고 경로 지정
-    images: [
-      "/projects/portfolio-1.png",
-      "/projects/portfolio-2.png",
-      "/projects/portfolio-3.png",
-    ],
+    // images: [
+    //   "/projects/portfolio-1.png",
+    //   "/projects/portfolio-2.png",
+    //   "/projects/portfolio-3.png",
+    // ],
     // video: "/projects/portfolio-demo.mp4",
     // 또는 YouTube/Vimeo 임베드 URL (선택사항)
-    videoEmbed: "https://youtu.be/6Ol1s1Hj76k?si=mdhSel2j97zKd74F&t=281",
+    // videoEmbed: "https://youtu.be/6Ol1s1Hj76k?si=mdhSel2j97zKd74F&t=281",
     details: {
       overview:
-        "개인 포트폴리오 웹사이트를 제작하여 프로젝트와 기술 스택을 효과적으로 소개합니다.",
+        "개인 포트폴리오 웹사이트를 제작하여 프로젝트와 기술 스택을 소개",
       features: [
-        "반응형 디자인으로 모든 디바이스 지원",
-        "Framer Motion을 활용한 부드러운 애니메이션",
-        "다크 모드 지원",
-        "SEO 최적화",
+        "간단한 소개",
+        "공부중인 기술스택과 사용해본 기술스택 등을 소개",
+        "진행한 다양한 프로젝트 소개",
       ],
       challenges:
-        "복잡한 애니메이션 구현 시 성능 최적화가 필요했으며, Framer Motion의 레이아웃 애니메이션을 활용하여 해결했습니다.",
-      results: "방문자 수 300% 증가, 평균 체류 시간 2분 이상",
+        "애니메이션 등을 많이 활요한 특히 Framer 라이브러리를 통해 새로운 경험을 해봄",
+      results: "다양한 사용자에게 개발이력을 소개할 수 있음",
     },
   },
   {
-    title: "날씨 대시보드",
+    title: "항공이",
     description:
-      "실시간 날씨 정보를 제공하는 웹 애플리케이션. OpenWeather API를 활용하여 데이터를 시각화했습니다.",
-    tech: ["React", "TypeScript", "Chart.js"],
+      "인천공항을 입.출입하는 항공정보와 실시간 환율 정보를 제공하는 Discord Bot",
+    tech: ["Spring", "JDA"],
     link: "https://weather-app.com",
-    github: "https://github.com/yourusername/weather",
-    period: "2023.11 - 2023.12",
-    icon: Cloud,
+    github: "https://github.com/sheepright/Mentoring_AirportBot",
+    period: "2024.06 - 2024.07",
+    iconImage: "/projects/airport/airport.png",
     details: {
       overview:
-        "실시간 날씨 정보와 5일 예보를 제공하는 직관적인 대시보드입니다.",
+        "디스코드 봇을 통하여 명령어로 간단하게 입출국 정보 조회 및 환율 조회가 가능한 서비스",
       features: [
-        "현재 위치 기반 날씨 정보",
-        "5일 예보 및 시간별 날씨",
-        "Chart.js를 활용한 데이터 시각화",
-        "도시 검색 및 즐겨찾기 기능",
+        "공공데이터포털 데이터를 통해 인천공항 입출국 데이터를 조회하여 가공 후 제공",
+        "공공데이터포털 데이터를 통해 환율 데이터를 조회하여 가공 후 제공",
+        "간단한 명령어를 통해 사용자는 손쉽게 데이터 제공 받음",
       ],
-      challenges:
-        "API 호출 최적화와 데이터 캐싱을 통해 불필요한 요청을 줄였습니다.",
-      results: "일일 활성 사용자 500명 이상",
+      challenges: "Spring을 통한 첫 Backend 프로젝트",
+      results: "공공데이터포털 등의 API를 가공하고 사용할 수 있게 됨",
     },
   },
 ];
