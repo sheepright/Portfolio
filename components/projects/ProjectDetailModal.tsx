@@ -1,7 +1,14 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { ExternalLink, Github, User, Users } from "lucide-react";
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { User, Users } from "lucide-react";
 import type { Project } from "@/types";
+import MediaViewer from "./modal/MediaViewer";
+import ThumbnailNav from "./modal/ThumbnailNav";
+import ProjectLinks from "./modal/ProjectLinks";
+import ProjectDetails from "./modal/ProjectDetails";
+import FullScreenImage from "./modal/FullScreenImage";
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -17,14 +24,102 @@ export default function ProjectDetailModal({
   isTeam,
 }: ProjectDetailModalProps) {
   const [selectedMedia, setSelectedMedia] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [isHovering, setIsHovering] = useState(false);
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const thumbnailContainerRef = useRef<HTMLDivElement>(null);
+
+  const IconComponent = project?.icon || (isTeam ? Users : User);
+  const hasMedia =
+    (project?.images && project.images.length > 0) ||
+    project?.video ||
+    project?.videoEmbed;
+
+  const totalMedia =
+    (project?.video || project?.videoEmbed ? 1 : 0) +
+    (project?.images?.length || 0);
+
+  // 썸네일 자동 스크롤 - selectedMedia가 변경될 때마다 실행
+  useEffect(() => {
+    if (thumbnailContainerRef.current && totalMedia > 1) {
+      const container = thumbnailContainerRef.current;
+      const thumbnailWidth = 104; // w-24 (96px) + gap (8px)
+      const scrollPosition = selectedMedia * thumbnailWidth;
+
+      container.scrollTo({
+        left: scrollPosition - container.clientWidth / 2 + thumbnailWidth / 2,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedMedia, totalMedia]);
+
+  const resetMediaState = () => {
+    setZoomLevel(1);
+    setImagePosition({ x: 0, y: 0 });
+  };
+
+  const handlePrevMedia = () => {
+    setSelectedMedia((prev) => (prev === 0 ? totalMedia - 1 : prev - 1));
+    resetMediaState();
+  };
+
+  const handleNextMedia = () => {
+    setSelectedMedia((prev) => (prev === totalMedia - 1 ? 0 : prev + 1));
+    resetMediaState();
+  };
+
+  const handleSelectMedia = (index: number) => {
+    setSelectedMedia(index);
+    resetMediaState();
+  };
+
+  const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.25, 3));
+
+  const handleZoomOut = () => {
+    setZoomLevel((prev) => {
+      const newZoom = Math.max(prev - 0.25, 1);
+      if (newZoom === 1) resetMediaState();
+      return newZoom;
+    });
+  };
+
+  const toggleFullZoom = () => {
+    setIsZoomed(!isZoomed);
+    if (!isZoomed) resetMediaState();
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoomLevel > 1) {
+      setIsDragging(true);
+      setDragStart({
+        x: e.clientX - imagePosition.x,
+        y: e.clientY - imagePosition.y,
+      });
+      e.preventDefault();
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && zoomLevel > 1) {
+      setImagePosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+
+  const isCurrentMediaImage =
+    project?.images &&
+    project.images[
+      selectedMedia - (project.video || project.videoEmbed ? 1 : 0)
+    ];
 
   if (!isOpen || !project) return null;
-
-  const IconComponent = project.icon || (isTeam ? Users : User);
-  const hasMedia =
-    (project.images && project.images.length > 0) ||
-    project.video ||
-    project.videoEmbed;
 
   return (
     <motion.div
@@ -82,86 +177,52 @@ export default function ProjectDetailModal({
 
         {/* Media Gallery */}
         {hasMedia && (
-          <div className="mb-6">
-            <div className="bg-slate-950/50 rounded-2xl overflow-hidden mb-4 border border-purple-500/20">
-              {project.videoEmbed && selectedMedia === 0 ? (
-                <div className="aspect-video">
-                  <iframe
-                    src={project.videoEmbed}
-                    className="w-full h-full"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : project.video && selectedMedia === 0 ? (
-                <video
-                  src={project.video}
-                  controls
-                  className="w-full aspect-video object-cover"
-                />
-              ) : project.images?.[
-                  selectedMedia - (project.video || project.videoEmbed ? 1 : 0)
-                ] ? (
-                <img
-                  src={
-                    project.images[
-                      selectedMedia -
-                        (project.video || project.videoEmbed ? 1 : 0)
-                    ]
-                  }
-                  alt={`${project.title} screenshot ${selectedMedia}`}
-                  className="w-full aspect-video object-cover"
-                />
-              ) : null}
-            </div>
-
-            {/* Thumbnail Navigation */}
-            <div className="flex gap-2 overflow-x-auto pb-2">
-              {(project.video || project.videoEmbed) && (
-                <button
-                  onClick={() => setSelectedMedia(0)}
-                  className={`shrink-0 w-24 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedMedia === 0
-                      ? "border-purple-400 shadow-lg shadow-purple-400/50"
-                      : "border-slate-600/50 hover:border-purple-400/50"
-                  }`}
-                >
-                  <div className="w-full h-full bg-slate-800/80 flex items-center justify-center">
-                    <svg
-                      className="w-8 h-8 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                    </svg>
-                  </div>
-                </button>
-              )}
-              {project.images?.map((image, idx) => (
-                <button
-                  key={idx}
-                  onClick={() =>
-                    setSelectedMedia(
-                      idx + (project.video || project.videoEmbed ? 1 : 0)
-                    )
-                  }
-                  className={`shrink-0 w-24 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedMedia ===
-                    idx + (project.video || project.videoEmbed ? 1 : 0)
-                      ? "border-purple-400 shadow-lg shadow-purple-400/50"
-                      : "border-slate-600/50 hover:border-purple-400/50"
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`Thumbnail ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
+          <div
+            className="mb-6"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            <MediaViewer
+              project={project}
+              selectedMedia={selectedMedia}
+              zoomLevel={zoomLevel}
+              isHovering={isHovering}
+              isDragging={isDragging}
+              imagePosition={imagePosition}
+              totalMedia={totalMedia}
+              onPrevMedia={handlePrevMedia}
+              onNextMedia={handleNextMedia}
+              onZoomIn={handleZoomIn}
+              onZoomOut={handleZoomOut}
+              onToggleFullZoom={toggleFullZoom}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+            />
+            <ThumbnailNav
+              project={project}
+              selectedMedia={selectedMedia}
+              totalMedia={totalMedia}
+              thumbnailContainerRef={thumbnailContainerRef}
+              onSelectMedia={handleSelectMedia}
+            />
           </div>
         )}
+
+        {/* Full Screen Zoom Modal */}
+        <AnimatePresence>
+          {isZoomed && isCurrentMediaImage && (
+            <FullScreenImage
+              src={
+                project.images![
+                  selectedMedia - (project.video || project.videoEmbed ? 1 : 0)
+                ]
+              }
+              alt={`${project.title} full screen`}
+              onClose={toggleFullZoom}
+            />
+          )}
+        </AnimatePresence>
 
         {/* Team Info */}
         {isTeam && project.team && project.role && (
@@ -178,26 +239,11 @@ export default function ProjectDetailModal({
         )}
 
         {/* Links */}
-        <div className="flex gap-3 mb-6">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 rounded-lg text-gray-200 font-main hover:text-white hover:bg-slate-600/50 transition-all border border-slate-600/50"
-          >
-            <Github className="w-4 h-4" />
-            GitHub
-          </a>
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-purple-500/30 rounded-lg text-purple-200 font-main hover:bg-purple-500/40 transition-all border border-purple-400/50"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Live Demo
-          </a>
-        </div>
+        <ProjectLinks
+          github={project.github}
+          link={project.link}
+          figma={project.figma}
+        />
 
         {/* Tech Stack */}
         <div className="mb-6">
@@ -215,56 +261,7 @@ export default function ProjectDetailModal({
         </div>
 
         {/* Details */}
-        {project.details && (
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-main text-white mb-2">
-                프로젝트 개요
-              </h3>
-              <p className="text-gray-300 font-sub leading-relaxed">
-                {project.details.overview}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-main text-white mb-2">주요 기능</h3>
-              <ul className="space-y-2">
-                {project.details.features.map((feature, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-start gap-2 font-sub text-gray-300"
-                  >
-                    <span className="text-purple-400 font-sub mt-1">•</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {project.details.myRole && (
-              <div>
-                <h3 className="text-lg font-main text-white mb-2">나의 역할</h3>
-                <p className="text-gray-300 font-sub leading-relaxed">
-                  {project.details.myRole}
-                </p>
-              </div>
-            )}
-
-            <div>
-              <h3 className="text-lg font-main text-white mb-2">기술적 도전</h3>
-              <p className="text-gray-300 font-sub leading-relaxed">
-                {project.details.challenges}
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-main text-white mb-2">성과</h3>
-              <p className="text-gray-300 font-sub leading-relaxed">
-                {project.details.results}
-              </p>
-            </div>
-          </div>
-        )}
+        {project.details && <ProjectDetails details={project.details} />}
       </motion.div>
     </motion.div>
   );

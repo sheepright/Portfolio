@@ -23,7 +23,7 @@ export interface Project {
   title: string;
   description: string;
   tech: string[];
-  link: string;
+  link?: string;
   github: string;
   period: string;
   icon?: LucideIcon;
@@ -34,6 +34,7 @@ export interface Project {
   details?: ProjectDetails;
   team?: string;
   role?: string;
+  figma?: string;
 }
 
 // Contact Types
