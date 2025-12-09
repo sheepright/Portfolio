@@ -3,23 +3,23 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Folder, Award, Briefcase, GraduationCap } from "lucide-react";
+import { User, Users, Code2, GraduationCap } from "lucide-react";
 
 const stats = [
   {
-    icon: Folder,
+    icon: User,
     number: "2",
-    label: "PERSNAL PROJECTS",
+    label: "PERSONAL PROJECTS",
     description: "개인으로 진행한 프로젝트",
   },
   {
-    icon: Award,
+    icon: Users,
     number: "5",
     label: "GROUP PROJECTS",
     description: "팀으로 진행한 프로젝트",
   },
   {
-    icon: Briefcase,
+    icon: Code2,
     number: "9",
     label: "SKILLS",
     description: "사용해본 기술스택",
