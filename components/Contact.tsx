@@ -26,7 +26,7 @@ export default function Contact() {
           <div className="text-center mb-12">
             <h2 className="text-5xl font-main text-white mb-3">Get In Touch</h2>
             <p className="text-gray-400 font-sub">
-              프로젝트 문의나 협업 제안이 있으시다면 언제든 연락주세요!
+              프로젝트 문의나 협업 제안이 있으시다면 언제든 연락주세요.
             </p>
           </div>
 
@@ -71,8 +71,8 @@ export default function Contact() {
               {/* Quick Message */}
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                 <p className="text-gray-300 font-sub leading-relaxed">
-                  💡 빠른 답변을 원하시면 이메일로 연락주세요. 보통 24시간
-                  이내에 답변드립니다.
+                  💡 이메일을 통해 연락주시면 언제나 빠르게 답장드리도록
+                  하겠습니다.
                 </p>
               </div>
             </motion.div>

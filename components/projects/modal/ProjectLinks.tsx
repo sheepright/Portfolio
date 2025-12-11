@@ -1,17 +1,20 @@
 "use client";
 
-import { Github, Video, Figma } from "lucide-react";
+import { Github, Video } from "lucide-react";
+import { SiNotion, SiFigma } from "react-icons/si";
 
 interface ProjectLinksProps {
   github: string;
   link?: string;
   figma?: string;
+  notion?: string;
 }
 
 export default function ProjectLinks({
   github,
   link,
   figma,
+  notion,
 }: ProjectLinksProps) {
   return (
     <div className="flex flex-wrap gap-3 mb-6">
@@ -19,7 +22,7 @@ export default function ProjectLinks({
         href={github}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 rounded-lg text-gray-200 font-main hover:text-white hover:bg-slate-600/50 transition-all border border-slate-600/50"
+        className="flex items-center gap-2 px-4 py-2 bg-gray-700/40 rounded-lg text-gray-200 font-main hover:text-white hover:bg-gray-600/50 transition-all border border-gray-600/40"
       >
         <Github className="w-4 h-4" />
         GitHub
@@ -29,9 +32,9 @@ export default function ProjectLinks({
           href={figma}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-pink-500/30 rounded-lg text-pink-200 font-main hover:bg-pink-500/40 transition-all border border-pink-400/50"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-700/40 rounded-lg text-gray-200 font-main hover:text-white hover:bg-gray-600/50 transition-all border border-gray-600/40"
         >
-          <Figma className="w-4 h-4" />
+          <SiFigma className="w-4 h-4" />
           Figma
         </a>
       )}
@@ -40,10 +43,21 @@ export default function ProjectLinks({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-purple-500/30 rounded-lg text-purple-200 font-main hover:bg-purple-500/40 transition-all border border-purple-400/50"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-700/40 rounded-lg text-gray-200 font-main hover:text-white hover:bg-gray-600/50 transition-all border border-gray-600/40"
         >
           <Video className="w-4 h-4" />
           관련 영상
+        </a>
+      )}
+      {notion && (
+        <a
+          href={notion}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-2 bg-gray-700/40 rounded-lg text-gray-200 font-main hover:text-white hover:bg-gray-600/50 transition-all border border-gray-600/40"
+        >
+          <SiNotion className="w-4 h-4" />
+          Notion
         </a>
       )}
     </div>

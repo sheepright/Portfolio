@@ -3,41 +3,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { User, Users, Code2, GraduationCap } from "lucide-react";
-
-const stats = [
-  {
-    icon: User,
-    number: "2",
-    label: "PERSONAL PROJECTS",
-    description: "개인으로 진행한 프로젝트",
-  },
-  {
-    icon: Users,
-    number: "5",
-    label: "GROUP PROJECTS",
-    description: "팀으로 진행한 프로젝트",
-  },
-  {
-    icon: Code2,
-    number: "9",
-    label: "SKILLS",
-    description: "사용해본 기술스택",
-  },
-];
-
-const education = [
-  {
-    school: "대림대학교",
-    degree: "컴퓨터정보학부 응용SW학과",
-    period: "2021.03.01 - 2026.02.15",
-  },
-  {
-    school: "흥진고등학교",
-    degree: "이공계, 소프트웨어중점반",
-    period: "2018.03.01 - 2021.02.15",
-  },
-];
+import Image from "next/image";
+import { stats, background } from "@/data/about";
 
 export default function About() {
   const ref = useRef(null);
@@ -81,13 +48,21 @@ export default function About() {
                   <br />
                   <span className="text-gray-300">양우</span>
                 </h3>
-                <p className="text-gray-300 font-sub  leading-relaxed mb-4">
+                <p className="text-gray-300 font-sub leading-relaxed mb-4">
                   새로운 기술과 아이디어를 프로젝트로 직접 구현하며 성장하는 웹
-                  개발자입니다. <br /> 웹, AI, 백엔드 등 다양한 분야의
-                  프로젝트를 스스로 설계하고 완성하는 과정 속에서 문제를
-                  해결하는 힘과 제품을 만드는 즐거움을 경험하고 있습니다. 기술적
-                  도전을 두려워하지 않고, 다양한 AI 기술과 서비스를 적용해보며
-                  빠르게 변화하는 환경 속에서 지속적으로 발전하고 있습니다.
+                  개발자입니다. <br />
+                  <span className="text-purple-200">
+                    AI 코딩 도구(Kiro, MCP, GPT 등)를 적극 활용
+                  </span>
+                  하여 개발 시간을 단축하고 반복적인 코드 작성을 효율화하며, 더
+                  나은 코드 품질과 생산성을 추구합니다. <br />
+                  웹, AI, 백엔드 등 다양한 분야의 프로젝트를 스스로 설계하고
+                  완성하는 과정에서 문제를 해결하는 힘과 제품을 만드는 즐거움을
+                  경험하고 있습니다.{" "}
+                  <span className="text-purple-200">
+                    최신 개발 트렌드와 AI 도구
+                  </span>
+                  를 빠르게 학습하고 적용하며 지속적으로 발전하고 있습니다.
                 </p>
               </motion.div>
 
@@ -100,10 +75,17 @@ export default function About() {
                     : { opacity: 0, scale: 0.8 }
                 }
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex justify-center items-start"
+                className="flex justify-end items-start -mt-4"
               >
-                <div className="w-48 h-48 rounded-full bg-linear-to-br from-purple-500/20 to-white/10 backdrop-blur-sm border-4 border-purple-400/30 flex items-center justify-center overflow-hidden">
-                  <span className="text-6xl">🐑</span>
+                <div className="w-64 h-64 rounded-full bg-linear-to-br from-purple-500/20 to-white/10 backdrop-blur-sm border-4 border-purple-400/30 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/image/profille.png"
+                    alt="Profile"
+                    width={256}
+                    height={256}
+                    className="w-5/6 h-5/6 object-cover rounded-full"
+                    priority
+                  />
                 </div>
               </motion.div>
             </div>
@@ -139,7 +121,7 @@ export default function About() {
             ))}
           </div>
 
-          {/* Education Section */}
+          {/* Background Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -147,26 +129,26 @@ export default function About() {
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
           >
             <h3 className="text-2xl font-main text-white mb-6 text-center">
-              Education
+              Background
             </h3>
             <div className="space-y-6">
-              {education.map((edu, idx) => (
+              {background.map((item, idx) => (
                 <div
                   key={idx}
                   className="flex items-start gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all"
                 >
                   <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <GraduationCap className="w-6 h-6 text-purple-400" />
+                    <item.icon className="w-6 h-6 text-purple-400" />
                   </div>
                   <div className="flex-1">
                     <h4 className="text-lg font-main text-white">
-                      {edu.school}
+                      {item.title}
                     </h4>
                     <p className="text-sm font-sub text-gray-300 mb-1">
-                      {edu.degree}
+                      {item.subtitle}
                     </p>
                     <p className="text-xs font-sub text-gray-400">
-                      {edu.period}
+                      {item.period}
                     </p>
                   </div>
                 </div>

@@ -243,20 +243,42 @@ export default function ProjectDetailModal({
           github={project.github}
           link={project.link}
           figma={project.figma}
+          notion={project.notion}
         />
 
         {/* Tech Stack */}
         <div className="mb-6">
-          <h3 className="text-lg font-main text-white mb-3">Tech Stack</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-lg font-main text-white">Tech Stack</h3>
+            {isTeam && project.myTech && project.myTech.length > 0 && (
+              <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-2 bg-purple-500/40 border border-purple-400/60 rounded-md"></div>
+                  <span className="text-purple-300">내가 사용한 기술</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-2 bg-slate-600/40 border border-slate-500/60 rounded-md"></div>
+                  <span className="text-slate-300">전체 프로젝트 기술</span>
+                </div>
+              </div>
+            )}
+          </div>
           <div className="flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 bg-purple-500/30 rounded-full text-sm font-sub text-purple-200 border border-purple-400/30"
-              >
-                {tech}
-              </span>
-            ))}
+            {project.tech.map((tech) => {
+              const isMyTech = isTeam ? project.myTech?.includes(tech) : true;
+              return (
+                <span
+                  key={tech}
+                  className={`px-4 py-2 rounded-full text-sm font-sub border ${
+                    isMyTech
+                      ? "bg-purple-500/30 text-purple-200 border-purple-400/50"
+                      : "bg-slate-600/30 text-slate-300 border-slate-500/40"
+                  }`}
+                >
+                  {tech}
+                </span>
+              );
+            })}
           </div>
         </div>
 

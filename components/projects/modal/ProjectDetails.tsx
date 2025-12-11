@@ -41,7 +41,9 @@ export default function ProjectDetails({ details }: ProjectDetailsProps) {
       )}
 
       <div>
-        <h3 className="text-lg font-main text-white mb-2">기술적 도전</h3>
+        <h3 className="text-lg font-main text-white mb-2">
+          개발 경험 & 학습 내용
+        </h3>
         <p className="text-gray-300 font-sub leading-relaxed">
           {details.challenges}
         </p>

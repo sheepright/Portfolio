@@ -23,6 +23,7 @@ export interface Project {
   title: string;
   description: string;
   tech: string[];
+  myTech?: string[]; // 내가 직접 사용한 기술 스택
   link?: string;
   github: string;
   period: string;
@@ -35,6 +36,7 @@ export interface Project {
   team?: string;
   role?: string;
   figma?: string;
+  notion?: string;
 }
 
 // Contact Types

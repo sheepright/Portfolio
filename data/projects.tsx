@@ -7,7 +7,7 @@ export const personalProjects: Project[] = [
   {
     title: "포트폴리오 웹사이트",
     description: "코딩 공부를 하면 진행한 프로젝트 등을 기록한 웹사이트",
-    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Versel"],
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Versel", "AWS"],
     github: "https://github.com/sheepright/Portfolio",
     period: "2025.10 - 2025.10",
     iconImage: `${S3_BASE_URL}/portfolio/portfolio.png`,
@@ -20,7 +20,7 @@ export const personalProjects: Project[] = [
         "진행한 다양한 프로젝트 소개",
       ],
       challenges:
-        "애니메이션 등을 많이 활요한 특히 Framer 라이브러리를 통해 새로운 경험을 해봄",
+        "AI Agent를 활용해 웹 개발을 진행하며, 단순히 코드를 맡기는 게 아니라 어떻게 해야 내 의도대로 똑똑하게 결과물을 낼 수 있을지 직접 부딪히고 고민하며 개발했습니다.",
       results: "다양한 사용자에게 개발이력을 소개할 수 있음",
     },
   },
@@ -47,7 +47,8 @@ export const personalProjects: Project[] = [
         "공공데이터포털 데이터를 통해 환율 데이터를 조회하여 가공 후 제공",
         "간단한 명령어를 통해 사용자는 손쉽게 데이터 제공 받음",
       ],
-      challenges: "Spring을 통한 첫 Backend 프로젝트",
+      challenges:
+        "Spring Framework와 JDA 라이브러리를 처음 사용하면서 백엔드 개발의 기초를 학습했습니다. 공공데이터 API 연동과 JSON 파싱, 디스코드 봇 명령어 처리 로직 구현을 통해 외부 API 활용 능력을 기를 수 있었습니다.",
       results: "공공데이터포털 등의 API를 가공하고 사용할 수 있게 됨",
     },
   },
@@ -66,8 +67,11 @@ export const teamProjects: Project[] = [
       "AWS",
       "Figma",
     ],
+    myTech: ["Python", "Next.js", "Tailwind CSS", "AWS", "Figma"],
     link: "https://youtu.be/NnAXeprRV0w?si=C5Ea7QsABFEtK-13",
     github: "https://github.com/sheepright/MonoGlyph",
+    notion:
+      "https://granite-curtain-436.notion.site/1c4e6025497280eeae5ee3cb3b6eede9?pvs=74",
     period: "2025.04 - 2025.11",
     team: "3명",
     role: "총괄 (중점: AI 개발, Web Designer)",
@@ -84,7 +88,7 @@ export const teamProjects: Project[] = [
         "사용자가 이용하기 쉽도록 UI/UX를 만들어 웹 형식으로 이용가능하도록 제작",
       ],
       challenges:
-        "OpenAI API와 기존의 있던 오픈 소스를 활용하여 모델을 학습시키고 활용했지만 직접 데이터를 수집하고 학습시키며 AI가 많이 활용되고 사용되는 시점에 많은 경험을 쌓음",
+        "OpenAI API와 딥러닝 모델을 연동하여 한글 폰트 생성 파이프라인을 구축하는 과정에서 AI 모델 학습과 데이터 전처리의 중요성을 학습했습니다. FontForge를 활용한 벡터 변환과 대용량 이미지 처리 최적화를 통해 AI와 전통적인 프로그래밍의 융합 경험을 쌓았습니다.",
       results: "한이음 드림업 공모전 출품, 장려상 수상 | 교내 공모전 출품",
       myRole: "AI 개발, 웹 디자인 및 총괄",
     },
@@ -93,6 +97,7 @@ export const teamProjects: Project[] = [
     title: "Study, Swipe",
     description: "AI 설문을 통한 자신에게 맞는 스터티 메이터 매칭 어플",
     tech: ["ReactNative", "Expo", "Nest.js", "PostgreSQL", "AWS", "Figma"],
+    myTech: ["ReactNative", "Expo", "Figma"],
     github: "https://github.com/CMU02/Study-Swipe-FE",
     figma:
       "https://www.figma.com/design/hoFqD7RVTeItkWwOMHMkPD/Study-Swipe?node-id=0-1&t=t7YEP4GqhVAswlxC-1",
@@ -110,7 +115,7 @@ export const teamProjects: Project[] = [
         "사용자가 편리하게 사용할 수 있도록 UI/UX 개선",
       ],
       challenges:
-        "PlayStore 배포를 목적으로 개발을 진행했으나 사용자 유치 등의 문제로 실패",
+        "React Native와 Expo를 활용한 첫 모바일 앱 개발 경험을 통해 크로스 플랫폼 개발의 장단점을 학습했습니다. OpenAI API를 활용한 매칭 알고리즘 구현과 사용자 설문 데이터 분석 로직 개발을 통해 AI 서비스 기획부터 구현까지의 전체 프로세스를 경험했습니다.",
       results: "첫 APP 개발로 React Native를 활용한 개발 등에 많은 경험을 쌓음",
       myRole: "전체적인 웹 디자인, Frontend Compont 개발",
     },
@@ -128,6 +133,7 @@ export const teamProjects: Project[] = [
       "Vercel",
       "Figma",
     ],
+    myTech: ["Next.js", "Tailwind CSS", "Figma"],
     github: "https://github.com/CMU02/ourVillage",
     figma:
       "https://www.figma.com/design/5S6URexAK4yZ6jmLd47Smk/%EC%83%9D%ED%99%9C%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B1%97%EB%B4%87?node-id=0-1&t=NC0BC7FH8AMudNpB-1",
@@ -145,7 +151,8 @@ export const teamProjects: Project[] = [
         "공공데이터포털의 지역화폐 사용처 정보를 통한 데이터 제공",
         "KakaoMap API를 통해 지도 상에서 쉽게 데이터 표시",
       ],
-      challenges: "짧은 시간동안 많은 양의 개발을 진행",
+      challenges:
+        "48시간이라는 제한된 해커톤 환경에서 팀원들과의 효율적인 협업과 빠른 프로토타이핑 능력을 기를 수 있었습니다. KakaoMap API와 공공데이터 연동, OpenAI 챗봇 구현을 동시에 진행하면서 시간 관리와 우선순위 설정의 중요성을 학습했습니다.",
       results:
         "첫 해커톤 경험으로 이틀이라는 짧은 시간동안 팀원들과 협업하여 시간을 나눠 개발하며 많은 경험을 쌓음",
       myRole: "전체적인 웹 디자인, Frontend Compont 개발",
@@ -156,6 +163,7 @@ export const teamProjects: Project[] = [
     description:
       "기존의 지루한 타자연습과 다르게 웹을 통한 쉽고 재밌는 간편한 타자 연습페이지",
     tech: ["Next.js", "Tailwind CSS", "Spring", "MySQL", "GCP", "Figma"],
+    myTech: ["Next.js", "Tailwind CSS", "Spring", "MySQL", "GCP", "Figma"],
     github: "https://github.com/sheepright/Typonic-Front",
     figma:
       "https://www.figma.com/design/fZuWrCqhJRJQyQWC2q3rpw/Typonic?node-id=0-1&t=6nYcW2dW9tFXKGM2-1",
@@ -184,7 +192,7 @@ export const teamProjects: Project[] = [
         "실시간 타자 연습 그래프 표시",
       ],
       challenges:
-        "첫 배포 도전으로 GCP 무료 크레딧을 통해 서버 배포 성공하여 실제 1~2달여간 운영",
+        "GCP를 활용한 첫 실제 서비스 배포와 운영 경험을 통해 클라우드 인프라의 이해도를 높였습니다. 실시간 타자 속도 측정과 랭킹 시스템 구현, 그리고 실제 사용자 피드백을 반영한 버그 수정 과정에서 서비스 운영의 전반적인 노하우를 습득했습니다.",
       results:
         "대학교내에서 에브리타임 등을 이용하여 약 1달 동안 랭킹 이벤트 진행, 다양한 버그들과 실제 운영하며 겪는 여러 문제점들을 경험 및 수정",
       myRole:
@@ -196,6 +204,7 @@ export const teamProjects: Project[] = [
     description:
       "Zomboid 게임의 직업, 특성 맞춤형 설정 페이지 및 게임 데이터 공유 페이지",
     tech: ["Next.js", "Tailwind CSS", "Node.js", "MySQL", "Azure", "Figma"],
+    myTech: ["Next.js", "Tailwind CSS", "MySQL", "Figma"],
     link: "https://youtu.be/6Ol1s1Hj76k?si=mdhSel2j97zKd74F&t=281",
     github: "https://github.com/kgw-coding/ZomBuilder-frontend",
     figma:
@@ -209,7 +218,7 @@ export const teamProjects: Project[] = [
         "Project Zomboid 게임 플레이어를 위한 캐릭터 빌드 공유 및 최적화 플랫폼입니다.",
       features: ["직업 및 특성 조합 시뮬레이터", "커뮤니티 빌드 공유 시스템"],
       challenges:
-        "다양한 모드 조합과 API 미제공으로 게임 데이터를 분해하여 직업과 특성 정보를 확인하여 DB화 시켜서 직접 사용하였습니다.",
+        "공식 API가 없는 게임 데이터를 직접 파싱하고 구조화하여 데이터베이스로 구축하는 과정에서 데이터 수집과 가공 능력을 기를 수 있었습니다. SEO 최적화와 커뮤니티 마케팅을 통해 실제 사용자 유입을 달성하면서 서비스 성장 전략에 대한 실무 경험을 쌓았습니다.",
       results:
         "SEO 설정과 커뮤니티 홍보 등을 통하여 누적 접속자 100명 이상과 구글, 네이버 등 검색 포털의 상단의 표시",
       myRole: "전체적인 웹 디자인, Frontend 협업 개발, API 연동",
