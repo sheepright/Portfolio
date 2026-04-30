@@ -254,11 +254,15 @@ export default function ProjectDetailModal({
               <div className="flex items-center gap-4 text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-2 bg-purple-500/40 border border-purple-400/60 rounded-md"></div>
-                  <span className="text-purple-300">내가 사용한 기술</span>
+                  <span className="text-purple-300 font-main">
+                    내가 사용한 기술
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-2 bg-slate-600/40 border border-slate-500/60 rounded-md"></div>
-                  <span className="text-slate-300">전체 프로젝트 기술</span>
+                  <span className="text-slate-300 font-main">
+                    전체 프로젝트 기술
+                  </span>
                 </div>
               </div>
             )}

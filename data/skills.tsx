@@ -16,6 +16,7 @@ import {
   SiUnity,
   SiExpo,
   SiVercel,
+  SiStyledcomponents,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbBrandCSharp, TbBrandAzure } from "react-icons/tb";
@@ -125,6 +126,20 @@ export const experiencedSkills: Skill[] = [
     category: "Frontend",
   },
   {
+    name: "Framer Motion",
+    icon: SiFramer,
+    color: "from-pink-500/20 to-purple-500/20",
+    iconColor: "text-pink-400",
+    category: "Frontend",
+  },
+  {
+    name: "Styled-Component",
+    icon: SiStyledcomponents,
+    color: "from-pink-500/20 to-purple-500/20",
+    iconColor: "text-pink-400",
+    category: "Frontend",
+  },
+  {
     name: "Node.js",
     icon: SiNodedotjs,
     color: "from-green-500/20 to-emerald-500/20",
@@ -172,12 +187,5 @@ export const experiencedSkills: Skill[] = [
     color: "from-black/20 to-gray-800/20",
     iconColor: "text-white",
     category: "DevTool",
-  },
-  {
-    name: "Framer Motion",
-    icon: SiFramer,
-    color: "from-pink-500/20 to-purple-500/20",
-    iconColor: "text-pink-400",
-    category: "Frontend",
   },
 ];

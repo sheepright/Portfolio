@@ -81,30 +81,56 @@ export default function ProjectSwiper({
           ))}
         </Swiper>
 
-        {/* Custom Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-4">
-          {projects.map((_, idx) => (
-            <button
-              key={idx}
-              onMouseEnter={() => {
-                const swiperElement = document.querySelector(".swiper") as any;
-                if (swiperElement?.swiper) {
-                  swiperElement.swiper.slideTo(idx);
-                }
-              }}
-              onClick={() => {
-                const swiperElement = document.querySelector(".swiper") as any;
-                if (swiperElement?.swiper) {
-                  swiperElement.swiper.slideTo(idx);
-                }
-              }}
-              className={`h-2 rounded-full transition-all ${
-                activeIndex === idx
-                  ? "w-8 bg-purple-400"
-                  : "w-2 bg-gray-600 hover:bg-gray-500"
-              }`}
-            />
-          ))}
+        {/* Custom Pagination Dots - All projects with capsule indicator */}
+        <div className="flex justify-center items-center gap-1 mt-4">
+          {projects.map((_, idx) => {
+            const isInCurrentView = idx >= activeIndex && idx < activeIndex + 2;
+            const isFirstInView = idx === activeIndex;
+            const isLastInView = idx === activeIndex + 1;
+            const isOnlyOneInView =
+              activeIndex === projects.length - 1 && idx === activeIndex;
+
+            return (
+              <button
+                key={idx}
+                onMouseEnter={() => {
+                  const swiperElement = document.querySelector(
+                    ".swiper"
+                  ) as any;
+                  if (swiperElement?.swiper) {
+                    swiperElement.swiper.slideTo(idx);
+                  }
+                }}
+                onClick={() => {
+                  const swiperElement = document.querySelector(
+                    ".swiper"
+                  ) as any;
+                  if (swiperElement?.swiper) {
+                    swiperElement.swiper.slideTo(idx);
+                  }
+                }}
+                className={`h-2 w-2 transition-all ${
+                  isInCurrentView
+                    ? `bg-purple-400 ${
+                        isOnlyOneInView
+                          ? "rounded-full"
+                          : isFirstInView
+                          ? "rounded-l-full rounded-r-none"
+                          : isLastInView
+                          ? "rounded-r-full rounded-l-none"
+                          : "rounded-none"
+                      }`
+                    : "bg-gray-600 hover:bg-gray-500 rounded-full"
+                }`}
+                style={{
+                  marginRight:
+                    isInCurrentView && !isLastInView && !isOnlyOneInView
+                      ? "0"
+                      : "4px",
+                }}
+              />
+            );
+          })}
         </div>
       </div>
       <ProjectDetailModal

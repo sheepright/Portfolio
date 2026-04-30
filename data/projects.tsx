@@ -20,7 +20,7 @@ export const personalProjects: Project[] = [
         "진행한 다양한 프로젝트 소개",
       ],
       challenges:
-        "AI Agent를 활용해 웹 개발을 진행하며, 단순히 코드를 맡기는 게 아니라 어떻게 해야 내 의도대로 똑똑하게 결과물을 낼 수 있을지 직접 부딪히고 고민하며 개발했습니다.",
+        "단순 구현을 넘어 AI 에이전트를 개발 파트너로 활용하여, 프롬프트 엔지니어링 기반의 자율적 디버깅과 효율적인 설계 중심의 워크플로우를 경험했습니다.",
       results: "다양한 사용자에게 개발이력을 소개할 수 있음",
     },
   },
@@ -117,7 +117,7 @@ export const teamProjects: Project[] = [
       challenges:
         "React Native와 Expo를 활용한 첫 모바일 앱 개발 경험을 통해 크로스 플랫폼 개발의 장단점을 학습했습니다. OpenAI API를 활용한 매칭 알고리즘 구현과 사용자 설문 데이터 분석 로직 개발을 통해 AI 서비스 기획부터 구현까지의 전체 프로세스를 경험했습니다.",
       results: "첫 APP 개발로 React Native를 활용한 개발 등에 많은 경험을 쌓음",
-      myRole: "전체적인 웹 디자인, Frontend Compont 개발",
+      myRole: "전체적인 웹 디자인, Frontend Component 개발",
     },
   },
   {
@@ -155,7 +155,7 @@ export const teamProjects: Project[] = [
         "48시간이라는 제한된 해커톤 환경에서 팀원들과의 효율적인 협업과 빠른 프로토타이핑 능력을 기를 수 있었습니다. KakaoMap API와 공공데이터 연동, OpenAI 챗봇 구현을 동시에 진행하면서 시간 관리와 우선순위 설정의 중요성을 학습했습니다.",
       results:
         "첫 해커톤 경험으로 이틀이라는 짧은 시간동안 팀원들과 협업하여 시간을 나눠 개발하며 많은 경험을 쌓음",
-      myRole: "전체적인 웹 디자인, Frontend Compont 개발",
+      myRole: "전체적인 웹 디자인, Frontend Component 개발",
     },
   },
   {
